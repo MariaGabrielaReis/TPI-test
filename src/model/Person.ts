@@ -1,16 +1,12 @@
 import { Phone } from './Phone';
 
-export class Client {
-  gender: string;
-  name: string;
+export class Person {
+  public gender: string;
+  public name: string;
   readonly birthday: Date;
   readonly cpf: number;
-  readonly registrationDate: Date;
-  phones: Array<Phone>;
+  public phones: Phone[];
   readonly pseudonym?: string;
-
-  produtosConsumidos: Array<Phone>;
-  servicosConsumidos: Array<Phone>;
 
   // sobrecarga de método (variações do construtor)
   constructor(
@@ -18,7 +14,7 @@ export class Client {
     name: string,
     birthday: Date,
     cpf: number,
-    phones: Array<Phone>,
+    phones: Phone[],
     pseudonym: string
   );
   constructor(
@@ -26,29 +22,25 @@ export class Client {
     name: string,
     birthday: Date,
     cpf: number,
-    phones: Array<Phone>
+    phones: Phone[]
   );
   constructor(
     gender: string,
     name: string,
     birthday: Date,
     cpf: number,
-    phones: Array<Phone>,
+    phones: Phone[],
     pseudonym?: string
   ) {
     this.gender = gender;
     this.name = name;
     this.birthday = birthday;
     this.cpf = cpf;
-    this.registrationDate = new Date();
     this.phones = phones;
 
     if (pseudonym !== undefined) {
       this.pseudonym = pseudonym;
     }
-
-    this.produtosConsumidos = [];
-    this.servicosConsumidos = [];
   }
 
   // GETTERS & SETTERS
@@ -66,14 +58,14 @@ export class Client {
     this.name = name;
   }
 
-  public get getPhones(): Array<Phone> {
+  public get getPhones(): Phone[] {
     return this.phones;
   }
-  public addPhone(newPhone: Phone) {
+  public addPhone(newPhone: Phone): Phone[] {
     this.phones.push(newPhone);
     return this.phones;
   }
-  public removePhone(removedPhone: Phone) {
+  public removePhone(removedPhone: Phone): Phone[] {
     const uptadedPhones = this.phones.filter(phone => {
       phone.getDdd !== removedPhone.getDdd &&
         phone.getNumber !== removedPhone.getNumber;
@@ -81,11 +73,4 @@ export class Client {
     this.phones = uptadedPhones;
     return this.phones;
   }
-
-  //public get getProdutosConsumidos(): Array<Produto> {
-  //  return this.produtosConsumidos;
-  //}
-  //public get getServicosConsumidos(): Array<Servico> {
-  //  return this.servicosConsumidos;
-  //}
 }

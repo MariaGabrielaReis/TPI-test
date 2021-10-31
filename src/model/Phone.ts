@@ -1,6 +1,6 @@
 export class Phone {
-  ddd: number;
-  number: number;
+  public ddd: number;
+  public number: number;
 
   constructor(ddd: number, number: number) {
     this.ddd = ddd;

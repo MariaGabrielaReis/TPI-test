@@ -3,34 +3,34 @@ import { Service } from './Service';
 import { Professional } from './Professional';
 
 export class Schedule {
-  date: Date | null;
-  client: Client;
-  services: Array<Service>;
-  professionals: Array<Professional>;
-  totalValue: number;
-  observations?: string;
+  public date: Date | null;
+  public client: Client;
+  public services: Service[];
+  public professionals: Professional[];
+  public totalValue: number;
+  public observations?: string;
 
   // sobrecarga de método (variações do construtor)
   constructor(
     date: Date,
     client: Client,
-    services: Array<Service>,
-    professionals: Array<Professional>,
+    services: Service[],
+    professionals: Professional[],
     totalValue: number
   );
   constructor(
     date: Date,
     client: Client,
-    services: Array<Service>,
-    professionals: Array<Professional>,
+    services: Service[],
+    professionals: Professional[],
     totalValue: number,
     observations: string
   );
   constructor(
     date: Date,
     client: Client,
-    services: Array<Service>,
-    professionals: Array<Professional>,
+    services: Service[],
+    professionals: Professional[],
     totalValue: number,
     observations?: string
   ) {
@@ -64,17 +64,17 @@ export class Schedule {
     this.client = client;
   }
 
-  public get getServices(): Array<Service> {
+  public get getServices(): Service[] {
     return this.services;
   }
-  public set setServices(services: Array<Service>) {
+  public set setServices(services: Service[]) {
     this.services = services;
   }
 
-  public get getProfessionals(): Array<Professional> {
+  public get getProfessionals(): Professional[] {
     return this.professionals;
   }
-  public set setProfessionals(professionals: Array<Professional>) {
+  public set setProfessionals(professionals: Professional[]) {
     this.professionals = professionals;
   }
 

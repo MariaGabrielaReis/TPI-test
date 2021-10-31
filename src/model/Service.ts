@@ -1,7 +1,7 @@
 export class Service {
-  name: string;
-  type: string;
-  value: number;
+  public name: string;
+  public type: string;
+  public value: number;
 
   constructor(name: string, type: string, value: number) {
     this.name = name;

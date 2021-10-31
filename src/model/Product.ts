@@ -1,7 +1,7 @@
 export class Product {
-  name: string;
-  type: string;
-  value: number;
+  public name: string;
+  public type: string;
+  public value: number;
   readonly expirationDate: Date;
   readonly brand: string;
 
@@ -20,7 +20,6 @@ export class Product {
   }
 
   // GETTERS & SETTERS
-
   public get getName(): string {
     return this.name;
   }
