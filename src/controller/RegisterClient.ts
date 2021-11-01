@@ -1,15 +1,15 @@
-import Entrada from '../services/entrada';
 import { Client } from '../model/Client';
+import { Input } from '../utils/Input';
 import { Phone } from '../model/Phone';
 import { Register } from './Register';
 import { Subsidiary } from '../model/Subsidiary';
 
 export class RegisterClient extends Register {
-  private entrada: Entrada;
+  private input: Input;
 
   constructor() {
     super();
-    this.entrada = new Entrada();
+    this.input = new Input();
   }
 
   public register(subsidiary: Subsidiary): void {
@@ -17,30 +17,30 @@ export class RegisterClient extends Register {
       `\nCadastro de cliente --------------------------------------------`
     );
 
-    let gender = this.entrada.receberTexto(`Gênero: `);
-    let name = this.entrada.receberTexto(`Nome: `);
-    let birthday = new Date(this.entrada.receberTexto(`Aniversário: `));
-    let cpf = Number(this.entrada.receberTexto(`CPF: `));
+    const gender = this.input.receiveText(`Gênero: `);
+    const name = this.input.receiveText(`Nome: `);
+    const birthday = new Date(this.input.receiveText(`Aniversário: `));
+    const cpf = this.input.receiveNumber(`CPF: `);
 
-    let ddd = Number(this.entrada.receberTexto(`Telefone - DDD: `));
-    let number = Number(this.entrada.receberTexto(`Telefone - número: `));
+    let ddd = this.input.receiveNumber(`Telefone - DDD: `);
+    let number = this.input.receiveNumber(`Telefone - número: `);
     let phones = <Phone[]>[];
     phones.push(new Phone(ddd, number));
 
-    let morePhones = this.entrada.receberTexto(`Mais algum? [s/n] `);
+    let morePhones = this.input.receiveText(`Mais algum? [s/n] `);
     while (morePhones === 's') {
-      ddd = Number(this.entrada.receberTexto(`Telefone - DDD: `));
-      number = Number(this.entrada.receberTexto(`Telefone - número: `));
+      ddd = this.input.receiveNumber(`Telefone - DDD: `);
+      number = this.input.receiveNumber(`Telefone - número: `);
       phones.push(new Phone(ddd, number));
 
-      morePhones = this.entrada.receberTexto(`Mais algum? [s/n] `);
+      morePhones = this.input.receiveText(`Mais algum? [s/n] `);
     }
 
-    let hasPseudonym = this.entrada.receberTexto(`Nome social/apelido? [s/n]`);
+    const hasPseudonym = this.input.receiveText(`Nome social/apelido? [s/n]`);
 
     if (hasPseudonym === 's') {
-      let pseudonym = this.entrada.receberTexto(`Nome social/apelido: `);
-      let newClient = new Client(
+      const pseudonym = this.input.receiveText(`Nome social/apelido: `);
+      const newClient = new Client(
         gender,
         name,
         birthday,
@@ -53,7 +53,7 @@ export class RegisterClient extends Register {
       clients.push(newClient);
       subsidiary.setClients(clients);
     } else {
-      let newClient = new Client(gender, name, birthday, cpf, phones);
+      const newClient = new Client(gender, name, birthday, cpf, phones);
 
       const clients = subsidiary.getClients;
       clients.push(newClient);

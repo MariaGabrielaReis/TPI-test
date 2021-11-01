@@ -1,4 +1,5 @@
 export class Product {
+  public id: number;
   public name: string;
   public type: string;
   public value: number;
@@ -12,6 +13,7 @@ export class Product {
     expirationDate: Date,
     brand: string
   ) {
+    this.id = Math.random();
     this.name = name;
     this.type = type;
     this.value = value;

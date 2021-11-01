@@ -4,9 +4,6 @@ import { Phone } from './Phone';
 export class Client extends Person {
   readonly registrationDate: Date;
 
-  produtosConsumidos: Phone[];
-  servicosConsumidos: Phone[];
-
   constructor(
     gender: string,
     name: string,
@@ -22,15 +19,5 @@ export class Client extends Person {
     }
 
     this.registrationDate = new Date();
-
-    this.produtosConsumidos = [];
-    this.servicosConsumidos = [];
   }
-
-  //public get getProdutosConsumidos(): Array<Produto> {
-  //  return this.produtosConsumidos;
-  //}
-  //public get getServicosConsumidos(): Array<Servico> {
-  //  return this.servicosConsumidos;
-  //}
 }

@@ -1,6 +1,6 @@
 import { Client } from './Client';
-import { Service } from './Service';
 import { Professional } from './Professional';
+import { Service } from './Service';
 
 export class Schedule {
   public date: Date | null;
