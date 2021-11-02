@@ -11,14 +11,14 @@ export class Phone {
   public get getDdd(): number {
     return this.ddd;
   }
-  public set setDdd(ddd: number) {
+  public setDdd(ddd: number) {
     this.ddd = ddd;
   }
 
   public get getNumber(): number {
-    return this.ddd;
+    return this.number;
   }
-  public set setNumber(number: number) {
+  public setNumber(number: number) {
     this.number = number;
   }
 }

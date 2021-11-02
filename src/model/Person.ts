@@ -6,9 +6,8 @@ export class Person {
   readonly birthday: Date;
   readonly cpf: number;
   public phones: Phone[];
-  readonly pseudonym?: string;
+  readonly pseudonym: string;
 
-  // sobrecarga de método (variações do construtor)
   constructor(
     gender: string,
     name: string,
@@ -16,45 +15,27 @@ export class Person {
     cpf: number,
     phones: Phone[],
     pseudonym: string
-  );
-  constructor(
-    gender: string,
-    name: string,
-    birthday: Date,
-    cpf: number,
-    phones: Phone[]
-  );
-  constructor(
-    gender: string,
-    name: string,
-    birthday: Date,
-    cpf: number,
-    phones: Phone[],
-    pseudonym?: string
   ) {
     this.gender = gender;
     this.name = name;
     this.birthday = birthday;
     this.cpf = cpf;
     this.phones = phones;
-
-    if (pseudonym !== undefined) {
-      this.pseudonym = pseudonym;
-    }
+    this.pseudonym = pseudonym;
   }
 
   // GETTERS & SETTERS
   public get getGender(): string {
     return this.gender;
   }
-  public set setGender(gender: string) {
+  public setGender(gender: string) {
     this.gender = gender;
   }
 
   public get getName(): string {
     return this.name;
   }
-  public set setName(name: string) {
+  public setName(name: string) {
     this.name = name;
   }
 

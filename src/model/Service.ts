@@ -1,9 +1,11 @@
 export class Service {
+  readonly id: number;
   public name: string;
   public type: string;
   public value: number;
 
   constructor(name: string, type: string, value: number) {
+    this.id = Math.random();
     this.name = name;
     this.type = type;
     this.value = value;
@@ -13,21 +15,21 @@ export class Service {
   public get getName(): string {
     return this.name;
   }
-  public set setName(name: string) {
+  public setName(name: string) {
     this.name = name;
   }
 
   public get getType(): string {
     return this.type;
   }
-  public set setType(type: string) {
+  public setType(type: string) {
     this.type = type;
   }
 
   public get getValue(): number {
     return this.value;
   }
-  public set setValue(value: number) {
+  public setValue(value: number) {
     this.value = value;
   }
 }

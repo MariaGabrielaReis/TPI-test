@@ -12,14 +12,9 @@ export class Professional extends Person {
     cpf: number,
     services: Service[],
     phones: Phone[],
-    pseudonym?: string
+    pseudonym: string
   ) {
-    if (pseudonym !== undefined) {
-      super(gender, name, birthday, cpf, phones, pseudonym);
-    } else {
-      super(gender, name, birthday, cpf, phones);
-    }
-
+    super(gender, name, birthday, cpf, phones, pseudonym);
     this.services = services;
   }
 
@@ -27,7 +22,7 @@ export class Professional extends Person {
   public get getServices(): Service[] {
     return this.services;
   }
-  public set setServices(services: Service[]) {
+  public setServices(services: Service[]) {
     this.services = services;
   }
 }

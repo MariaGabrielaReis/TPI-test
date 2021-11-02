@@ -60,35 +60,35 @@ export class Schedule {
   public get getClient(): Client {
     return this.client;
   }
-  public set setClient(client: Client) {
+  public setClient(client: Client) {
     this.client = client;
   }
 
   public get getServices(): Service[] {
     return this.services;
   }
-  public set setServices(services: Service[]) {
+  public setServices(services: Service[]) {
     this.services = services;
   }
 
   public get getProfessionals(): Professional[] {
     return this.professionals;
   }
-  public set setProfessionals(professionals: Professional[]) {
+  public setProfessionals(professionals: Professional[]) {
     this.professionals = professionals;
   }
 
   public get getTotalValue(): number {
     return this.totalValue;
   }
-  public set setTotalValue(totalValue: number) {
+  public setTotalValue(totalValue: number) {
     this.totalValue = totalValue;
   }
 
   public get getObservations(): string | null | undefined {
     return this.observations;
   }
-  public set setObservations(observation: string) {
+  public setObservations(observation: string) {
     this.observations = observation;
   }
 }

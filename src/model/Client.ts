@@ -10,13 +10,9 @@ export class Client extends Person {
     birthday: Date,
     cpf: number,
     phones: Phone[],
-    pseudonym?: string
+    pseudonym: string
   ) {
-    if (pseudonym !== undefined) {
-      super(gender, name, birthday, cpf, phones, pseudonym);
-    } else {
-      super(gender, name, birthday, cpf, phones);
-    }
+    super(gender, name, birthday, cpf, phones, pseudonym);
 
     this.registrationDate = new Date();
   }

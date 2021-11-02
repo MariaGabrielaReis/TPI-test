@@ -37,7 +37,7 @@ export class Subsidiary {
   }
 
   // GETTERS & SETTERS
-  public getName(): string | undefined {
+  public get getName(): string {
     return this.name;
   }
   public setName(name: string) {
@@ -51,28 +51,28 @@ export class Subsidiary {
     this.clients = clients;
   }
 
-  public get getProducts(): Product[] | undefined {
+  public get getProducts(): Product[] {
     return this.products || [];
   }
   public setProducts(products: Product[]) {
     this.products = products;
   }
 
-  public getServices(): Service[] | undefined {
+  public get getServices(): Service[] {
     return this.services || [];
   }
   public setServices(services: Service[]) {
     this.services = services;
   }
 
-  public getProfessionals(): Professional[] | undefined {
+  public get getProfessionals(): Professional[] {
     return this.professionals || [];
   }
   public setProfessionals(professionals: Professional[]) {
     this.professionals = professionals;
   }
 
-  public getSchedule(): Schedule | undefined {
+  public get getSchedule(): Schedule | undefined {
     return this.schedule;
   }
   public setSchedule(schedule: Schedule) {
