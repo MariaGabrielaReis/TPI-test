@@ -13,11 +13,16 @@ export class ListClients extends List {
 
     const clients = subsidiary.getClients;
     clients.forEach(client => {
-      console.log(`Nome: ` + client.getName);
-      console.log(`Nome social/apelido: ` + client.pseudonym);
-      console.log(`CPF: ` + client.cpf);
+      console.log(`
+      Nome: ${client.getName}
+      Nome social/apelido: ${client.pseudonym}
+      CPF: ${client.cpf}
+      Telefones:`);
 
-      console.log(`-------------------------------------------`);
+      client.getPhones.forEach(phone => {
+        console.log(`            (${phone.getDdd}) ${phone.getNumber}`);
+      });
+      console.log(`      -------------------------------------------`);
     });
 
     console.log(

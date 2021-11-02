@@ -24,7 +24,7 @@ export class CreateClient extends Create {
 
     let ddd = this.input.receiveNumber(`Telefone - DDD: `);
     let number = this.input.receiveNumber(`Telefone - número: `);
-    let phones = <Phone[]>[];
+    let phones: Phone[] = [];
     phones.push(new Phone(ddd, number));
 
     let morePhones = this.input.receiveText(`Mais algum? [s/n] `).toLowerCase();
@@ -37,7 +37,7 @@ export class CreateClient extends Create {
     }
 
     const hasPseudonym = this.input
-      .receiveText(`Nome social/apelido? [s/n]`)
+      .receiveText(`Nome social/apelido? [s/n] `)
       .toLowerCase();
 
     if (hasPseudonym === 's') {
@@ -55,7 +55,14 @@ export class CreateClient extends Create {
       clients.push(newClient);
       subsidiary.setClients(clients);
     } else {
-      const newClient = new Client(gender, name, birthday, cpf, phones);
+      const newClient = new Client(
+        gender,
+        name,
+        birthday,
+        cpf,
+        phones,
+        'não há'
+      );
 
       const clients = subsidiary.getClients;
       clients.push(newClient);

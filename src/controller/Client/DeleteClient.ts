@@ -33,9 +33,16 @@ export class DeleteClient extends Delete {
         }
       });
       subsidiary.setClients(updatedClients);
-      console.log('Exclusão concluída com sucesso! :)');
+
+      console.log(`\nExclusão concluída com sucesso! :)`);
+      console.log(
+        '----------------------------------------------------------------'
+      );
     } else {
-      console.log('Tarefa cancelada com sucesso! :)');
+      console.log(`\nTarefa cancelada com sucesso! :)`);
+      console.log(
+        '----------------------------------------------------------------'
+      );
     }
   }
 

@@ -6,5 +6,5 @@ export abstract class Delete {
     cpf: number
   ): void;
 
-  public abstract delete(clientCpf: number, subsidiary: Subsidiary): void;
+  public abstract delete(id: number, subsidiary: Subsidiary): void;
 }
