@@ -1,5 +1,5 @@
-import { List } from './List';
-import { Subsidiary } from '../model/Subsidiary';
+import { List } from '../List';
+import { Subsidiary } from '../../model/Subsidiary';
 
 export class ListClients extends List {
   constructor() {

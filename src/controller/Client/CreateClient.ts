@@ -1,10 +1,10 @@
-import { Client } from '../model/Client';
-import { Input } from '../utils/Input';
-import { Phone } from '../model/Phone';
-import { Register } from './Register';
-import { Subsidiary } from '../model/Subsidiary';
+import { Client } from '../../model/Client';
+import { Create } from '../Create';
+import { Input } from '../../utils/Input';
+import { Phone } from '../../model/Phone';
+import { Subsidiary } from '../../model/Subsidiary';
 
-export class RegisterClient extends Register {
+export class CreateClient extends Create {
   private input: Input;
 
   constructor() {
@@ -12,7 +12,7 @@ export class RegisterClient extends Register {
     this.input = new Input();
   }
 
-  public register(subsidiary: Subsidiary): void {
+  public create(subsidiary: Subsidiary): void {
     console.log(
       `\nCadastro de cliente --------------------------------------------`
     );
@@ -27,16 +27,18 @@ export class RegisterClient extends Register {
     let phones = <Phone[]>[];
     phones.push(new Phone(ddd, number));
 
-    let morePhones = this.input.receiveText(`Mais algum? [s/n] `);
+    let morePhones = this.input.receiveText(`Mais algum? [s/n] `).toLowerCase();
     while (morePhones === 's') {
       ddd = this.input.receiveNumber(`Telefone - DDD: `);
       number = this.input.receiveNumber(`Telefone - número: `);
       phones.push(new Phone(ddd, number));
 
-      morePhones = this.input.receiveText(`Mais algum? [s/n] `);
+      morePhones = this.input.receiveText(`Mais algum? [s/n] `).toLowerCase();
     }
 
-    const hasPseudonym = this.input.receiveText(`Nome social/apelido? [s/n]`);
+    const hasPseudonym = this.input
+      .receiveText(`Nome social/apelido? [s/n]`)
+      .toLowerCase();
 
     if (hasPseudonym === 's') {
       const pseudonym = this.input.receiveText(`Nome social/apelido: `);
