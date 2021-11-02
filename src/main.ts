@@ -1,9 +1,26 @@
 import { Input } from './utils/Input';
-import { DeleteClient } from './controller/Client/DeleteClient';
-import { ListClients } from './controller/Client/ListClients';
-import { CreateClient } from './controller/Client/CreateClient';
 import { Subsidiary } from './model/Subsidiary';
-import { UpdateClient } from './controller/Client/UpdateClient';
+
+import {
+  CreateClient,
+  DeleteClient,
+  ListClients,
+  UpdateClient,
+} from './controller/Client';
+
+import {
+  CreateProduct,
+  DeleteProduct,
+  ListProducts,
+  UpdateProduct,
+} from './controller/Product';
+
+import {
+  CreateService,
+  DeleteService,
+  ListServices,
+  UpdateService,
+} from './controller/Service';
 
 console.log(`Central de ações: Grupo World Beauty ---------------------------`);
 const subsidiary = new Subsidiary('Filial Teste');
@@ -24,13 +41,15 @@ while (execution) {
   [06] Cadastrar produto
   [07] Atualizar cadastro de produto
   [08] Excluir produto
-  [09] Listar produtos de acordo com algum filtro
+  [09] Listar todos os produtos
+  [10] Listar produtos de acordo com algum filtro
 
   - Serviços
-  [10] Cadastrar serviço
-  [11] Atualizar cadastro de serviço
-  [12] Excluir serviço
-  [13] Listar serviços de acordo com algum filtro
+  [11] Cadastrar serviço
+  [12] Atualizar cadastro de serviço
+  [13] Excluir serviço
+  [14] Listar todos os serviços
+  [15] Listar serviços de acordo com algum filtro
 
   [0] Sair
   `);
@@ -49,14 +68,14 @@ while (execution) {
       const createClient = new CreateClient();
       createClient.create(subsidiary);
       break;
-    // case 2:
-    //   // Atualizar cadastro de cliente
-    //   const clientCpfToUpdate = input.receiveNumber(
-    //     `Por favor, insira o CPF para atualização do cadastro de cliente: `
-    //   );
-    //   const updateClient = new UpdateClient();
-    //   updateClient.update(clientCpfToUpdate, subsidiary);
-    //   break;
+    case 2:
+      // Atualizar cadastro de cliente
+      const clientCpfToUpdate = input.receiveNumber(
+        `Por favor, insira o CPF para atualização do cadastro de cliente: `
+      );
+      const updateClient = new UpdateClient();
+      updateClient.update(clientCpfToUpdate, subsidiary);
+      break;
     case 3:
       // Excluir cliente
       const clientCpfToDelete = input.receiveNumber(
@@ -105,22 +124,33 @@ while (execution) {
     //       console.log(`Operação não entendida :(`);
     //   }
     //   break;
-    // case 6:
-    //   // Cadastrar produto
-    //   const registerProduct = new RegisterProduct();
-    //   registerProduct.register(subsidiary);
-    //   break;
-    // case 7:
-    //   // Atualizar cadastro de produto
-    //   const updateProduct = new UpdateProduct();
-    //   updateProduct.update(productId, subsidiary);
-    //   break;
-    // case 8:
-    //   // Excluir produto
-    //   const deleteProduct = new DeleteProduct();
-    //   deleteProduct.delete(productId, subsidiary);
-    //   break;
-    // case 9:
+    case 6:
+      // Cadastrar produto
+      const createProduct = new CreateProduct();
+      createProduct.create(subsidiary);
+      break;
+    case 7:
+      // Atualizar cadastro de produto
+      const productIdToUpdate = input.receiveNumber(
+        `Por favor, insira o código para atualização do cadastro de produto: `
+      );
+      const updateProduct = new UpdateProduct();
+      updateProduct.update(productIdToUpdate, subsidiary);
+      break;
+    case 8:
+      // Excluir produto
+      const productIdToDelete = input.receiveNumber(
+        `Por favor, insira o código para exclusão do produto: `
+      );
+      const deleteProduct = new DeleteProduct();
+      deleteProduct.delete(productIdToDelete, subsidiary);
+      break;
+    case 9:
+      // Listar todos os produtos
+      const listProducts = new ListProducts();
+      listProducts.list(subsidiary);
+      break;
+    // case 10:
     //   // Listar produtos de acordo com algum filtro
     //   console.log(`
     //   Que filtro gostaria de aplicar?
@@ -145,22 +175,33 @@ while (execution) {
     //       console.log(`Operação não entendida :(`);
     //   }
     //   break;
-    // case 10:
-    //   // Cadastrar serviço
-    //   const registerService = new RegisterService();
-    //   registerService.register(subsidiary);
-    //   break;
-    // case 11:
-    //   // Atualizar cadastro de serviço
-    //   const updateService = new UpdateService();
-    //   updateService.update(serviceId, subsidiary);
-    //   break;
-    // case 12:
-    //   // Excluir serviço
-    //   const deleteService = new DeleteService();
-    //   deleteService.delete(serviceId, subsidiary);
-    //   break;
-    // case 13:
+    case 11:
+      // Cadastrar serviço
+      const createService = new CreateService();
+      createService.create(subsidiary);
+      break;
+    case 12:
+      // Atualizar cadastro de serviço
+      const serviceIdToUpdate = input.receiveNumber(
+        `Por favor, insira o código para atualização do cadastro de serviço: `
+      );
+      const updateService = new UpdateService();
+      updateService.update(serviceIdToUpdate, subsidiary);
+      break;
+    case 13:
+      // Excluir serviço
+      const serviceIdToDelete = input.receiveNumber(
+        `Por favor, insira o código para exclusão do serviço: `
+      );
+      const deleteService = new DeleteService();
+      deleteService.delete(serviceIdToDelete, subsidiary);
+      break;
+    case 14:
+      // Listar todos os serviços
+      const listServices = new ListServices();
+      listServices.list(subsidiary);
+      break;
+    // case 15:
     //   // Listar serviços de acordo com algum filtro
     //   console.log(`
     //   Que filtro gostaria de aplicar?
