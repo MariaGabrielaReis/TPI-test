@@ -31,13 +31,13 @@ import { populateOrders } from './utils/PopulateOrders';
 
 console.log(`Central de ações: Grupo World Beauty ---------------------------`);
 const subsidiary = new Subsidiary('Filial Teste');
+populateClients(subsidiary);
+populateProducts(subsidiary);
+populateOrders(subsidiary);
 let execution = true;
 
 while (execution) {
   // Populando os objetos
-  populateClients(subsidiary);
-  populateProducts(subsidiary);
-  populateOrders(subsidiary);
 
   console.log(`
   Opções:
