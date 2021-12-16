@@ -1,4 +1,5 @@
 import { Client } from './Client';
+import { Order } from './Order';
 import { Product } from './Product';
 import { Professional } from './Professional';
 import { Schedule } from './Schedule';
@@ -10,6 +11,7 @@ export class Subsidiary {
   public products?: Product[];
   public services?: Service[];
   public professionals?: Professional[];
+  public orders?: Order[];
   public schedule?: Schedule;
 
   constructor(
@@ -18,6 +20,7 @@ export class Subsidiary {
     products?: Product[],
     services?: Service[],
     professionals?: Professional[],
+    orders?: Order[],
     schedule?: Schedule
   ) {
     this.name = name;
@@ -26,12 +29,14 @@ export class Subsidiary {
       products !== undefined &&
       services !== undefined &&
       professionals !== undefined &&
+      orders !== undefined &&
       schedule !== undefined
     ) {
       this.clients = clients;
       this.products = products;
       this.services = services;
       this.professionals = professionals;
+      this.orders = orders;
       this.schedule = schedule;
     }
   }
@@ -70,6 +75,13 @@ export class Subsidiary {
   }
   public setProfessionals(professionals: Professional[]) {
     this.professionals = professionals;
+  }
+
+  public get getOrders(): Order[] {
+    return this.orders || [];
+  }
+  public setOrders(orders: Order[]) {
+    this.orders = orders;
   }
 
   public get getSchedule(): Schedule | undefined {

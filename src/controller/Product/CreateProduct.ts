@@ -20,7 +20,7 @@ export class CreateProduct extends Create {
     const type = this.input.receiveText(`Tipo: `).toLowerCase();
     const brand = this.input.receiveText(`Marca: `).toLowerCase();
     const value = this.input.receiveNumber(`Valor: R$`);
-    const expirationDate = new Date(this.input.receiveText(`Validade: `));
+    const expirationDate = this.input.receiveText(`Validade: `);
 
     const newProduct = new Product(name, type, brand, value, expirationDate);
 

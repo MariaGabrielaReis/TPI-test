@@ -4,14 +4,14 @@ export class Product {
   public type: string;
   readonly brand: string;
   public value: number;
-  readonly expirationDate: Date;
+  readonly expirationDate: string;
 
   constructor(
     name: string,
     type: string,
     brand: string,
     value: number,
-    expirationDate: Date
+    expirationDate: string
   ) {
     this.id = Math.random();
     this.name = name;

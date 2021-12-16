@@ -6,6 +6,7 @@ import {
   DeleteClient,
   ListClients,
   UpdateClient,
+  SelectClients,
 } from './controller/Client';
 
 import {
@@ -22,11 +23,22 @@ import {
   UpdateService,
 } from './controller/Service';
 
+import { CreateOrder, DeleteOrder, ListOrders } from './controller/Order';
+
+import { populateClients } from './utils/PopulateClients';
+import { populateProducts } from './utils/PopulateProducts';
+import { populateOrders } from './utils/PopulateOrders';
+
 console.log(`Central de ações: Grupo World Beauty ---------------------------`);
 const subsidiary = new Subsidiary('Filial Teste');
 let execution = true;
 
 while (execution) {
+  // Populando os objetos
+  populateClients(subsidiary);
+  populateProducts(subsidiary);
+  populateOrders(subsidiary);
+
   console.log(`
   Opções:
 
@@ -50,6 +62,11 @@ while (execution) {
   [13] Excluir serviço
   [14] Listar todos os serviços
   [15] Listar serviços de acordo com algum filtro
+
+  - Pedidos
+  [16] Cadastrar pedido
+  [17] Excluir pedido
+  [18] Listar todos os pedidos
 
   [0] Sair
   `);
@@ -89,41 +106,41 @@ while (execution) {
       const listClients = new ListClients();
       listClients.list(subsidiary);
       break;
-    // case 5:
-    //   // Listar clientes de acordo com algum filtro
-    //   console.log(`
-    //   Que filtro gostaria de aplicar?
+    case 5:
+      // Listar clientes de acordo com algum filtro
+      console.log(`
+      Que filtro gostaria de aplicar?
 
-    //   [1] 10 clientes que mais consumiram em quantidade, não em valor
-    //   [2] Classificação por gênero
-    //   [3] 10 clientes que menos consumiram produtos ou serviços
-    //   [4] 5 clientes que mais consumiram em valor, não em quantidade
-    //   `);
-    //   option = input.receiveNumber(`Por favor, escolha uma opção: `);
+      [1] 10 clientes que mais consumiram em quantidade, não em valor
+      [2] Classificação por gênero
+      [3] 10 clientes que menos consumiram produtos ou serviços
+      [4] 5 clientes que mais consumiram em valor, não em quantidade
+      `);
+      option = input.receiveNumber(`Por favor, escolha uma opção: `);
 
-    //   const selectClients = new SelectClients();
+      const selectClients = new SelectClients();
 
-    //   switch (option) {
-    //     case 1:
-    //       // 10 clientes que mais consumiram em quantidade, não em valor
-    //       selectClients.selectClientsByMoreConsumedInQuantity(subsidiary);
-    //       break;
-    //     case 2:
-    //       // Classificação por gênero
-    //       selectClients.selectClientsByGender(subsidiary);
-    //       break;
-    //     case 3:
-    //       // 10 clientes que menos consumiram produtos ou serviços
-    //       selectClients.selectClientsByLessConsumption(subsidiary);
-    //       break;
-    //     case 4:
-    //       // 5 clientes que mais consumiram em valor, não em quantidade
-    //       selectClients.selectClientsByMoreConsumedInValue(subsidiary);
-    //       break;
-    //     default:
-    //       console.log(`Operação não entendida :(`);
-    //   }
-    //   break;
+      switch (option) {
+        case 1:
+          // 10 clientes que mais consumiram em quantidade, não em valor
+          selectClients.selectClientsByMoreConsumedInQuantity(subsidiary);
+          break;
+        case 2:
+          // Classificação por gênero
+          //selectClients.selectClientsByGender(subsidiary);
+          break;
+        case 3:
+          // 10 clientes que menos consumiram produtos ou serviços
+          //selectClients.selectClientsByLessConsumption(subsidiary);
+          break;
+        case 4:
+          // 5 clientes que mais consumiram em valor, não em quantidade
+          //selectClients.selectClientsByMoreConsumedInValue(subsidiary);
+          break;
+        default:
+          console.log(`Operação não entendida :(`);
+      }
+      break;
     case 6:
       // Cadastrar produto
       const createProduct = new CreateProduct();
@@ -226,6 +243,24 @@ while (execution) {
     //       console.log(`Operação não entendida :(`);
     //   }
     //   break;
+    case 16:
+      // Cadastrar pedido
+      const createOrder = new CreateOrder();
+      createOrder.create(subsidiary);
+      break;
+    case 17:
+      // Excluir pedido
+      const orderIdToDelete = input.receiveNumber(
+        `Por favor, insira o id para exclusão de pedido: `
+      );
+      const deleteOrder = new DeleteOrder();
+      deleteOrder.delete(orderIdToDelete, subsidiary);
+      break;
+    case 18:
+      // Listar todos os pedidos
+      const listOrders = new ListOrders();
+      listOrders.list(subsidiary);
+      break;
     default:
       console.log(`Operação não entendida :(`);
   }
